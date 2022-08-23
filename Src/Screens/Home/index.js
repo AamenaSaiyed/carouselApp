@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
+import {OptimizedImage} from '../../Components';
 import {hp, wp} from '../../Utilities/ResponsiveLayout';
 const Index = props => {
   const [image, setImages] = useState([]);
@@ -35,7 +36,7 @@ const Index = props => {
       title: 'Article ',
     },
   ];
-  
+
   const _renderGrids = ({item, index}) => {
     ++index;
     return (
@@ -49,7 +50,10 @@ const Index = props => {
           alignItems: 'center',
           overflow: 'hidden',
         }}>
-       <Text>{item.title + index}</Text>
+        <OptimizedImage
+
+          {...props}
+        />
       </View>
     );
   };
@@ -58,7 +62,7 @@ const Index = props => {
     <View style={{flex: 1}}>
       <View style={{marginHorizontal: wp(20), marginTop: hp(20)}}>
         <FlatList
-          data={DummyData}
+          data={image}
           renderItem={_renderGrids}
           numColumns={2}
           showsVerticalScrollIndicator={false}
