@@ -1,14 +1,23 @@
-import React,{useRef} from 'react';
+import React,{useRef, useState} from 'react';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import {hp, wp} from '../../Utilities/ResponsiveLayout';
 import FastImage from 'react-native-fast-image';
 import Lightbox from 'react-native-lightbox';
 const Index = props => {
   const lightBoxRef=useRef(null)
-  const {width, height, url} = props;
+  const {url} = props;
+  const [isOpen,setOpen]=useState(false)
+  console.log(isOpen? 0:5)
+  
   return (
-    <View style={{width: wp(200), height: wp(200)}}>
+    <View style={{width: wp(200), height: wp(200),borderWidth:isOpen ? 0:5}}>
       <Lightbox
+      onOpen={()=>{
+setOpen(true)
+      }}
+      onClose={()=>{
+        setOpen(false)
+              }}
       ref={lightBoxRef}
         swipeToDismiss={true}
         pageTransitionConfig={{
@@ -24,12 +33,12 @@ const Index = props => {
           bounciness: 0.1, //Controls bounciness. Default 8.
         }}>
         <FastImage
-          style={{width: wp(width), height: wp(height)}}
+          style={ {width: '100%', height: '100%'}}
           source={{
             uri: url,
             priority: FastImage.priority.normal,
           }}
-          resizeMode={FastImage.resizeMode.cover}
+          resizeMode={isOpen ?FastImage.resizeMode.contain :FastImage.resizeMode.cover}
         />
       </Lightbox>
     </View>

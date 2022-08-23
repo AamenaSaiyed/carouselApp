@@ -1,21 +1,19 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
+import { hp, wp } from "../../Utilities/ResponsiveLayout";
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  columnWrapper: {
+    borderRadius: wp(8),
+    width: "49%",
+    height: hp(140),
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+  listwrapper: { marginHorizontal: wp(5), marginTop: hp(5) },
+  columnWrappercontainer:{
+    justifyContent: 'space-between',
+    marginBottom: hp(5),
+  }
 });
 
 export default styles;

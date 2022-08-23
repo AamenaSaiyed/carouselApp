@@ -1,2 +1,3 @@
 import OptimizedImage from './ImageContainer';
-export {OptimizedImage};
+import DropDown from './DropDownContainer';
+export {OptimizedImage, DropDown};
