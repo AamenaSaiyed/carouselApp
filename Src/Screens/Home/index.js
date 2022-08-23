@@ -2,41 +2,23 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import {OptimizedImage} from '../../Components';
 import {hp, wp} from '../../Utilities/ResponsiveLayout';
+import {getCatsList} from '../../APi/Services/ApiServices';
 const Index = props => {
   const [image, setImages] = useState([]);
-  const DummyData = [
-    {
-      title: 'Article ',
-    },
-    {
-      title: 'Article ',
-    },
-    {
-      title: 'Article ',
-    },
-    {
-      title: 'Article ',
-    },
-    {
-      title: 'Article ',
-    },
-    {
-      title: 'Article ',
-    },
-    {
-      title: 'Article ',
-    },
-    {
-      title: 'Article ',
-    },
-    {
-      title: 'Article ',
-    },
-    {
-      title: 'Article ',
-    },
-  ];
 
+  useEffect(() => {
+    GetCatsList();
+  }, []);
+  const GetCatsList = async () => {
+    const body = {
+      limit: 10,
+    };
+    var response = await getCatsList(body);
+    if (response.status == '200') {
+      setImages(response.data);
+    }
+    console.log('{API RESPONSE' + JSON.stringify(response));
+  };
   const _renderGrids = ({item, index}) => {
     ++index;
     return (
@@ -51,7 +33,9 @@ const Index = props => {
           overflow: 'hidden',
         }}>
         <OptimizedImage
-
+          height={item.height}
+          width={item.width}
+          url={item.url}
           {...props}
         />
       </View>

@@ -26,10 +26,10 @@ const Index = props => {
         <FastImage
           style={{width: wp(width), height: wp(height)}}
           source={{
-            uri: 'https://cdn2.thecatapi.com/images/cd0.jpg',
+            uri: url,
             priority: FastImage.priority.normal,
           }}
-          resizeMode={FastImage.resizeMode.contain}
+          resizeMode={FastImage.resizeMode.cover}
         />
       </Lightbox>
     </View>
