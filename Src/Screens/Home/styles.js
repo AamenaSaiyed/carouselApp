@@ -9,11 +9,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     overflow: "hidden",
   },
-  listwrapper: { marginHorizontal: wp(5), marginTop: hp(5) },
-  columnWrappercontainer:{
-    justifyContent: 'space-between',
+  listwrapper: {
+    flex:1,
+     marginHorizontal: wp(5),
+      marginTop: hp(10) 
+    },
+  columnWrappercontainer: {
+    justifyContent: "space-between",
     marginBottom: hp(5),
-  }
+  },
+  dropDownContainer: {
+    height: hp(50),
+    justifyContent: "center",
+    borderRadius: wp(12),
+  },
 });
 
 export default styles;
