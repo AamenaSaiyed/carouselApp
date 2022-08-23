@@ -10,19 +10,17 @@ import {
 import styles from "./styles";
 import Colors from "../../Theme/Colors";
 
-
 const Index = (props) => {
-
   const [image, setImages] = useState([]);
   const [Breed, setBreed] = useState([]);
-const [refreshing,setRefresh]=useState(false)
+  const [refreshing, setRefresh] = useState(false);
 
   useEffect(() => {
     GetCatsList();
     getBreedData();
   }, []);
 
-// get Cat list
+  // get Cat list
   const GetCatsList = async () => {
     const body = {
       limit: 10,
@@ -30,11 +28,11 @@ const [refreshing,setRefresh]=useState(false)
     var response = await getCatsList(body);
     if (response.status == "200") {
       setImages(response.data);
-      setRefresh(false)
+      setRefresh(false);
     }
   };
 
-// get Cat Breeds
+  // get Cat Breeds
 
   const getBreedData = async () => {
     var response = await getBreeds();
@@ -49,7 +47,7 @@ const [refreshing,setRefresh]=useState(false)
     }
   };
 
-// get Cats by breedtype
+  // get Cats by breedtype
   const getCatsBybreed = async (data) => {
     const body = {
       limit: 10,
@@ -69,21 +67,38 @@ const [refreshing,setRefresh]=useState(false)
       </View>
     );
   };
-const _handleRefresh=()=>{
-  setRefresh(true)
-  setTimeout(()=>{
-  GetCatsList();
-  },750)
-}
+  const _handleRefresh = () => {
+    setRefresh(true);
+    setTimeout(() => {
+      GetCatsList();
+    }, 750);
+  };
   return (
     <View style={{ flex: 1 }}>
-      <View style={{height:hp(60),width:'100%',justifyContent:'center',alignItems:'center'}}>
-          <Text style={{color:Colors.Firefly,fontWeight:'600',fontSize:wp(20),textDecorationStyle:'solid',textDecorationLine:'underline',lineHeight:22}}>{"Cats & Breeds"}</Text>
+      <View
+        style={{
+          height: hp(60),
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text
+          style={{
+            color: Colors.Firefly,
+            fontWeight: "600",
+            fontSize: wp(20),
+            textDecorationStyle: "solid",
+            textDecorationLine: "underline",
+            lineHeight: 22,
+          }}
+        >
+          {"Cats & Breeds"}
+        </Text>
       </View>
       <View key={refreshing} style={styles.dropDownContainer}>
         {/* Render dropdown with breed types */}
         <DropDown
-        
           selectCallback={(data) => {
             getCatsBybreed(data);
           }}

@@ -1,3 +1,4 @@
 import OptimizedImage from './ImageContainer';
 import DropDown from './DropDownContainer';
-export {OptimizedImage, DropDown};
+import LoadingView from './Loader';
+export {OptimizedImage, DropDown,LoadingView};

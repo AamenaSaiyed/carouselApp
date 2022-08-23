@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
 import { hp, wp } from "../../Utilities/ResponsiveLayout";
 import FastImage from "react-native-fast-image";
 import Lightbox from "react-native-lightbox";
-import LoadingView from "../Loader";
+import { LoadingView } from "..";
 
 const Index = (props) => {
   const { url } = props;
@@ -28,8 +28,6 @@ const [isLoading,setLoading]=useState(false)
           config: { mass: 1, tension: 320, friction: 32 },
         }}
         springConfig={{
-          // friction: 7,//Controls "bounciness"/overshoot. Default 7.
-          // tension: 10, //Controls speed. Default 40.
           speed: 12, //Controls speed of the animation.Default 12.
           bounciness: 0.1, //Controls bounciness. Default 8.
         }}

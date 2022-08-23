@@ -3,7 +3,7 @@ import React from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import Colors from "../../Theme/Colors";
 
-export default function LoadingView () {
+export default function Index () {
         return (
             <View style={styles.container}>
                 <ActivityIndicator size="small" color={Colors.POLICE_BLUE}/>
